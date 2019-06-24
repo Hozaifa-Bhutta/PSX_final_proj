@@ -29,5 +29,3 @@ class player(pygame.sprite.Sprite):
  
 	def go_right(self):
 		self.rect.x += 6
-		print ('In go_right')
-		print (self.rect.x)

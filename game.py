@@ -32,6 +32,7 @@ while not done:
 		platform.draw()
 		platform.update()
 	player1.draw_player()
+	player1.rect.x-=1
 
 
 	pygame.display.flip()
