@@ -7,6 +7,7 @@ BLUE = (0,0,220)
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 done = False
 platforms = pygame.sprite.Group()
+pygame.Rect(10,10,10,10)
 platform1 = platform(BLUE, 20, 20, 30, 30, screen)
 platforms.add(platform1)
  

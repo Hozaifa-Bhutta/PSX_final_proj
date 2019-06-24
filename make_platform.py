@@ -10,6 +10,6 @@ class platform(pygame.sprite.Sprite):
 		'''self.image = pygame.image.load("platform.png").convert_alpha()
 		self.rect = self.image.get_rect()
 		self.rect.center = screen.center'''
-		self.rect = pygame.rect(x,y,width,height)
+		self.rect = pygame.Rect(x,y,width,height)
 	def draw_wall(self):	
 		pygame.draw.rect(screen,color,self.rect)
