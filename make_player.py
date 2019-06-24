@@ -15,4 +15,5 @@ class player(pygame.sprite.Sprite):
 		self.rect = pygame.Rect(self.x,self.y,40,60)
 	def draw_player(self):
 		pygame.draw.rect(self.screen,self.color, self.rect)
+	
 		
