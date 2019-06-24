@@ -29,8 +29,8 @@ while not done:
 	if pressed[pygame.K_LEFT]:
 		player1.go_left()
 	for platform in platforms:
-		if abs(player1.rect.x-platform.rect.x) <= 70:
-			print ('collision')
+		if abs(player1.rect.x-platform.rect.x) <= 35 and abs(player1.rect.y-platform.rect.y)<= 5.5:
+			player1.rect.x = platform.rect.x -35
 			continue
 	screen.fill((0,0,0))
 	for platform in platforms:
