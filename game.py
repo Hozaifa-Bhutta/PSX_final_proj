@@ -5,15 +5,15 @@ clock = pygame.time.Clock()
 
 pygame.init()
 WIDTH = 1200
-HEIGHT = 1000
+HEIGHT = 600
 BLUE = (0,0,220)
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 done = False
 platforms = pygame.sprite.Group()
 pygame.Rect(10,10,10,10)
-platform1 = platform(BLUE, 20, 20, 30, 30, screen)
+platform1 = platform(BLUE, 100, 20, 30, 30, screen)
 platforms.add(platform1)
-player1 = player(100,10,screen)
+player1 = player(100,500,screen)
  
 while not done:
 	for event in pygame.event.get():
