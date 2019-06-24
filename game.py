@@ -1,5 +1,6 @@
 import pygame
 from make_platform import platform
+from make_player import player
 pygame.init()
 WIDTH = 1200
 HEIGHT = 1000
