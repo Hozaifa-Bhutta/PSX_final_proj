@@ -29,8 +29,10 @@ while not done:
 		player1.go_left()
 	screen.fill((0,0,0))
 	for platform in platforms:
-		platform.draw_wall()
+		platform.draw()
+		platform.update()
 	player1.draw_player()
+
 
 	pygame.display.flip()
 	clock.tick(60)

@@ -17,5 +17,8 @@ class platform(pygame.sprite.Sprite):
 		self.y = y
 		self.width = width
 		self.rect = pygame.Rect(x,y,width,height)
-	def draw_wall(self):	
+	def draw(self):	
 		pygame.draw.rect(self.screen,self.color,self.rect)
+	def update(self):
+		self.rect.x-=1
+
