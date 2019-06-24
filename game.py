@@ -15,5 +15,7 @@ while not done:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			done = True
+		for platform in platforms:
+			platform.draw_wall()
 	presed = pygame.key.get_pressed()
 	pygame.display.flip()
