@@ -18,12 +18,12 @@ class player(pygame.sprite.Sprite):
 	
 	def jump(self):
 		 for x in range(11):
-		 	self.y -= 1
+		 	self.rect.y -= 1
 
 	def go_left(self):
-		self.x += -6
+		self.rect.x += -6
  
 	def go_right(self):
+		self.rect.x += 6
 		print ('In go_right')
-		self.x += 6
-		print (self.rect)
+		print (self.rect.x)

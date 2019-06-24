@@ -1,6 +1,8 @@
 import pygame
 from make_platform import platform
 from make_player import player
+clock = pygame.time.Clock()
+
 pygame.init()
 WIDTH = 1200
 HEIGHT = 1000
@@ -17,9 +19,6 @@ while not done:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			done = True
-		for platform in platforms:
-			platform.draw_wall()
-		player1.draw_player()
 
 	pressed = pygame.key.get_pressed()
 	if pressed[pygame.K_UP]:
@@ -28,4 +27,10 @@ while not done:
 		player1.go_right()
 	if pressed[pygame.K_LEFT]:
 		player1.go_left()
+	screen.fill((0,0,0))
+	for platform in platforms:
+		platform.draw_wall()
+	player1.draw_player()
+
 	pygame.display.flip()
+	clock.tick(60)
