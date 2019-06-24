@@ -21,7 +21,9 @@ class player(pygame.sprite.Sprite):
 		 	self.y -= 1
 
 	def go_left(self):
-		self.change_x = -6
+		self.x += -6
  
 	def go_right(self):
-		self.change_x = 6
+		print ('In go_right')
+		self.x += 6
+		print (self.rect)
