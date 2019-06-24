@@ -11,6 +11,7 @@ platforms = pygame.sprite.Group()
 pygame.Rect(10,10,10,10)
 platform1 = platform(BLUE, 20, 20, 30, 30, screen)
 platforms.add(platform1)
+player1 = player(100,10,screen)
  
 while not done:
 	for event in pygame.event.get():
@@ -18,5 +19,6 @@ while not done:
 			done = True
 		for platform in platforms:
 			platform.draw_wall()
+		player1.draw_player()
 	presed = pygame.key.get_pressed()
 	pygame.display.flip()
