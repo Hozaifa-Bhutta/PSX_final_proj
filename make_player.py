@@ -16,4 +16,12 @@ class player(pygame.sprite.Sprite):
 	def draw_player(self):
 		pygame.draw.rect(self.screen,self.color, self.rect)
 	
-		
+	def jump(self):
+		 for x in range(11):
+		 	self.y -= 1
+
+	def go_left(self):
+		self.change_x = -6
+ 
+	def go_right(self):
+		self.change_x = 6
