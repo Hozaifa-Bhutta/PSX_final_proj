@@ -20,5 +20,12 @@ while not done:
 		for platform in platforms:
 			platform.draw_wall()
 		player1.draw_player()
-	presed = pygame.key.get_pressed()
+
+	pressed = pygame.key.get_pressed()
+	if pressed[pygame.K_UP]:
+		player1.jump()
+	if pressed[pygame.K_RIGHT]:
+		player1.go_right()
+	if pressed[pygame.K_LEFT]:
+		player1.go_left()
 	pygame.display.flip()
