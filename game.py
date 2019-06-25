@@ -2,7 +2,10 @@ import pygame
 from make_platform import platform
 from make_player import player
 def is_colliding(platform, player):
-		player.rect.colliderect(platform.rect)
+		if player.rect.colliderect(platform.rect):
+			if (player1.rect.y-30) ==(platform.rect.y-platform.rect.height):
+				return 'Up'
+
 clock = pygame.time.Clock()
 
 pygame.init()
@@ -28,18 +31,12 @@ while not done:
 	if pressed[pygame.K_UP]:
 		for i in range(0,5):
 			for platform in platforms:
-				if player1.rect.colliderect(platform.rect):
-					
-					if (player1.rect.y -60) - platform.rect.y==-116:
-						for i in range(0,5):
-							player1.jump()
-
-
-					else:
-						player1.rect.y+=1
-						break
+				if is_colliding(platform,player1) == 'Up':
+					print ('Don\'t go up')
 				else:
 					player1.jump()
+
+				
 
 		player1.jumping == False
 	if pressed[pygame.K_RIGHT]:
@@ -49,9 +46,8 @@ while not done:
 
 	
 	for platform in platforms:
-		if player1.rect.colliderect(platform.rect):
-
-			break
+		if False:
+			pass
 		else:
 			player1.gravity()
 
