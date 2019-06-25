@@ -1,6 +1,7 @@
 import pygame
 from make_platform import platform
 from make_player import player
+
 clock = pygame.time.Clock()
 
 pygame.init()

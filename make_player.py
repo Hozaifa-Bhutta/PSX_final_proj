@@ -14,18 +14,22 @@ class player(pygame.sprite.Sprite):
 		self.screen = screen
 		self.rect = pygame.Rect(self.x,self.y,40,60)
 		self.speed = 1
+		self.velocity = 1
 	def draw_player(self):
 		pygame.draw.rect(self.screen,self.color, self.rect)
 	
 	def gravity(self):
-		if self.y > 0:
-			self.y -= 0.35
+		if self.rect.y < 500:
+			self.rect.y += self.velocity
+			self.velocity += 0.1
+		else:
+			self.velocity = 1
+
 	def jump(self):
-		for x in range(1,11):
-			self.rect.y -= 1
+		self.rect.y -= 15
 
 	def go_left(self):
 		self.rect.x += -6
- 
+
 	def go_right(self):
 		self.rect.x += 6
