@@ -1,5 +1,4 @@
 import pygame
-
 class player(pygame.sprite.Sprite):
 	def __init__(self,x,y,screen):
 
@@ -26,7 +25,7 @@ class player(pygame.sprite.Sprite):
 			self.velocity = 1
 
 	def jump(self):
-		self.rect.y -= 15
+		self.rect.y -= 25
 
 	def go_left(self):
 		self.rect.x += -6
