@@ -5,6 +5,8 @@ def is_colliding(platform, player):
 		if player.rect.colliderect(platform.rect):
 			if (player1.rect.y-30) ==(platform.rect.y-platform.rect.height):
 				return 'Up'
+			if (player1.rect.y +30) == (platform.rect.y):
+				return 'Down'
 
 clock = pygame.time.Clock()
 
@@ -46,8 +48,8 @@ while not done:
 
 	
 	for platform in platforms:
-		if False:
-			pass
+		if is_colliding(platform,player1) == 'Down':
+			print ('Dont go down')
 		else:
 			player1.gravity()
 
