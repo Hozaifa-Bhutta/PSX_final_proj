@@ -14,7 +14,11 @@ clock = pygame.time.Clock()
 pygame.init()
 WIDTH = 1200
 HEIGHT = 600
-BLUE = (0,0,220)
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+GREEN = (0, 255, 0)
+RED = (255, 0, 0)
+BLUE = (0, 0, 255)
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 done = False
 platforms = pygame.sprite.Group()
