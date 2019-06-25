@@ -1,3 +1,4 @@
+import pygame
 
 class lava(pygame.sprite.Sprite):
 	def __init__(self, color, width, height, x, y,screen):

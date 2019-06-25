@@ -5,8 +5,8 @@ class player(pygame.sprite.Sprite):
 
 		super().__init__()
 		
-		RED = (255, 0, 0)
-		self.color = RED
+		Green = (0, 255, 0)
+		self.color = Green
 		self.width = 40
 		self.height = 60
 		self.x = x
