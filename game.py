@@ -3,9 +3,10 @@ from make_platform import platform
 from make_player import player
 def is_colliding(platform, player):
 		if player.rect.colliderect(platform.rect):
+			platform_list = range(platform.rect.y-10,platform.rect.y+10)
 			if (player1.rect.y-30) ==(platform.rect.y-platform.rect.height):
 				return 'Up'
-			if (player1.rect.y +30) == (platform.rect.y):
+			if (player1.rect.y +50) in platform_list:
 				return 'Down'
 
 clock = pygame.time.Clock()
