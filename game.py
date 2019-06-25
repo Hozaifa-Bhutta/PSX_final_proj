@@ -12,9 +12,9 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 done = False
 platforms = pygame.sprite.Group()
 pygame.Rect(10,10,10,10)
-platform1 = platform(BLUE, 100, 20, 450, 500, screen)
+platform1 = platform(BLUE, 100, 20, 450, 400, screen)
 platforms.add(platform1)
-player1 = player(100,500,screen)
+player1 = player(100,500,screen,platforms)
  
 while not done:
 	for event in pygame.event.get():
@@ -24,16 +24,20 @@ while not done:
 
 	pressed = pygame.key.get_pressed()
 	if pressed[pygame.K_UP]:
-		player1.jump()
+		for i in range(0,5):
+			for platform in platforms:
+				if player1.rect.colliderect(platform.rect):
+					break
+				else:
+					player1.jump()
 	if pressed[pygame.K_RIGHT]:
 		player1.go_right()
 	if pressed[pygame.K_LEFT]:
 		player1.go_left()
-	for platform in platforms:
-		if abs(player1.rect.x-platform.rect.x) <= 35 and abs(player1.rect.y-platform.rect.y)<= 5.5:
-			player1.rect.x = platform.rect.x -35
-			continue
+
 	player1.gravity()
+	if player1.jumping == True:
+		player1.jump()
 	screen.fill((0,0,0))
 	for platform in platforms:
 		platform.draw()
