@@ -35,7 +35,12 @@ while not done:
 	if pressed[pygame.K_LEFT]:
 		player1.go_left()
 
-	player1.gravity()
+	
+	for platform in platforms:
+		if player1.rect.colliderect(platform.rect):
+			break
+		else:
+			player1.gravity()
 	if player1.jumping == True:
 		player1.jump()
 	screen.fill((0,0,0))

@@ -29,8 +29,6 @@ class player(pygame.sprite.Sprite):
 	def jump(self):
 		self.rect.y -= 1
 
-
-
 	def go_left(self):
 		self.rect.x += -6
 
