@@ -1,7 +1,8 @@
 import pygame
 from make_platform import platform
 from make_player import player
-
+def is_colliding(platform, player):
+		player.rect.colliderect(platform.rect)
 clock = pygame.time.Clock()
 
 pygame.init()
@@ -17,6 +18,7 @@ platforms.add(platform1)
 player1 = player(100,500,screen,platforms)
  
 while not done:
+	previous_y = player1.rect.y
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			done = True
@@ -27,9 +29,19 @@ while not done:
 		for i in range(0,5):
 			for platform in platforms:
 				if player1.rect.colliderect(platform.rect):
-					break
+					
+					if (player1.rect.y -60) - platform.rect.y==-116:
+						for i in range(0,5):
+							player1.jump()
+
+
+					else:
+						player1.rect.y+=1
+						break
 				else:
 					player1.jump()
+
+		player1.jumping == False
 	if pressed[pygame.K_RIGHT]:
 		player1.go_right()
 	if pressed[pygame.K_LEFT]:
@@ -38,11 +50,11 @@ while not done:
 	
 	for platform in platforms:
 		if player1.rect.colliderect(platform.rect):
+
 			break
 		else:
 			player1.gravity()
-	if player1.jumping == True:
-		player1.jump()
+
 	screen.fill((0,0,0))
 	for platform in platforms:
 		platform.draw()
