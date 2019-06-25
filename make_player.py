@@ -18,8 +18,8 @@ class player(pygame.sprite.Sprite):
 		pygame.draw.rect(self.screen,self.color, self.rect)
 	
 	def gravity(self):
-		pass
-
+		if self.y > 0:
+			self.y -= 0.35
 	def jump(self):
 		for x in range(1,11):
 			self.rect.y -= 1

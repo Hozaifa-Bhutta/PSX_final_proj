@@ -32,6 +32,7 @@ while not done:
 		if abs(player1.rect.x-platform.rect.x) <= 35 and abs(player1.rect.y-platform.rect.y)<= 5.5:
 			player1.rect.x = platform.rect.x -35
 			continue
+	player1.gravity()
 	screen.fill((0,0,0))
 	for platform in platforms:
 		platform.draw()
