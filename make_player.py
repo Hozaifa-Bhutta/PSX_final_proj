@@ -16,8 +16,10 @@ class player(pygame.sprite.Sprite):
 		self.speed = 1
 		self.velocity = 1
 		self.jumping = False
+		self.Img = pygame.image.load('mario.png')
+
 	def draw_player(self):
-		pygame.draw.rect(self.screen,self.color, self.rect)
+		self.screen.blit(self.Img, (self.rect.x,self.rect.y))
 	
 	def gravity(self):
 		if self.rect.y < 500:
