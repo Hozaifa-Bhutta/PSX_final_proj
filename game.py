@@ -6,13 +6,18 @@ def is_colliding(platforms, player):
 		if player.rect.colliderect(platform.rect):
 			platform_list_y = range(platform.rect.y-10,platform.rect.y+10)
 			if (player.rect.y-30) ==(platform.rect.y-platform.rect.height):
+				print ('Up')
 				return 'Up'
-			elif (player.rect.y +50) in platform_list_y:
+			elif (player.rect.y +55) in platform_list_y:
+				print ('Down')
 				return 'Down'
-			elif (platform.rect.x)-(player.rect.x + 40) <=3: #and bool(set(range(player.rect.y-60,player.rect.y)) and set(range(platform.rect.y-platform.height,platform.rect.y))):
+			elif abs((platform.rect.x)-(player.rect.x + 40)) <=5: 
+				#print ('Right')
 				return 'Right'
 			else:
+				print ('in left')
 				return 'Left'
+			print (platform.rect.x+platform.width,player.rect.x)
 
 clock = pygame.time.Clock()
 
@@ -55,19 +60,22 @@ while not done:
 		player1.jumping == False
 	if pressed[pygame.K_RIGHT]:
 		if is_colliding(platforms,player1) == 'Right':
-			print ('Don\'t go right')
+			#print ('Don\'t go right')
+			pass
 		else:
 			player1.go_right()
 
 	if pressed[pygame.K_LEFT]:
 		if is_colliding(platforms,player1) == 'Left':
-			print ('don\'t go left')
+			#print ('don\'t go left')
+			pass
 		else:
 			player1.go_left()
 
 	
 	if is_colliding(platforms,player1) == 'Down':
 		#print ('Dont go down')
+
 		player1.velocity = 1
 	else:
 		player1.gravity()
