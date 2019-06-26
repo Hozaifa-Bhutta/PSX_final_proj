@@ -20,7 +20,13 @@ def is_colliding(platforms, player):
 			elif abs((player.rect.x)-(platform.rect.x+platform.width)):
 				direction_vals.append('Left')
 	return direction_vals
-
+def game_over(screen):
+	font = pygame.font.Font(None, 36)
+	text = font.render("Game Over", True, WHITE)
+	text_rect = text.get_rect()
+	text_x = screen.get_width() / 2 - text_rect.width / 2
+	text_y = screen.get_height() / 2 - text_rect.height / 2
+	screen.blit(text, [text_x, text_y])
 clock = pygame.time.Clock()
 
 pygame.init()
@@ -37,7 +43,7 @@ platforms = pygame.sprite.Group()
 pygame.Rect(10,10,10,10)
 platform1 = platform(BLUE, 100, 20, 450, 400, screen)
 platforms.add(platform1)
-platforms.add(platform(BLUE,100,20,800,250,screen))
+platforms.add(platform(GREEN,100,200,800,250,screen))
 platforms.add(platform(GREEN, 100, 20 ,800, 300,screen))
 platforms.add(platform(WHITE, 200, 20 ,60, 400,screen))
 platforms.add(platform(RED, 100, 20 ,75, 350,screen))
@@ -56,8 +62,9 @@ platforms.add(platform(RED, 100, 20 ,400, 100,screen))
 platforms.add(platform(BLUE, 200, 20 ,300, 150,screen))
 platforms.add(platform(GREEN, 150, 20 ,400, 50,screen))
 platforms.add(platform(BLACK, 250, 20 ,500, 100,screen))
-player1 = player(100,500,screen,platforms)
+player1 = player(200,500,screen,platforms)
 Lava = lv(RED,500,700,-400,1,screen) 
+moving = True
 while not done:
 
 	previous_y = player1.rect.y
@@ -65,40 +72,40 @@ while not done:
 		if event.type == pygame.QUIT:
 			done = True
 
+	if moving == True:
+		pressed = pygame.key.get_pressed()
+		if pressed[pygame.K_UP]:
+			for i in range(0,5):
+				if 'Up' in is_colliding(platforms,player1):
+					#print ('Don\'t go up')
+					pass
+				else:
+					player1.jump()
 
-	pressed = pygame.key.get_pressed()
-	if pressed[pygame.K_UP]:
-		for i in range(0,5):
-			if 'Up' in is_colliding(platforms,player1):
-				#print ('Don\'t go up')
+					
+
+			player1.jumping == False
+		if pressed[pygame.K_RIGHT]:
+			if 'Right' in is_colliding(platforms,player1):
+				#print ('Don\'t go right')
 				pass
 			else:
-				player1.jump()
+				player1.go_right()
 
-				
+		if pressed[pygame.K_LEFT]:
+			if 'Left' in is_colliding(platforms,player1) :
+				#print ('don\'t go left')
+				pass
+			else:
+				player1.go_left()
 
-		player1.jumping == False
-	if pressed[pygame.K_RIGHT]:
-		if 'Right' in is_colliding(platforms,player1):
-			#print ('Don\'t go right')
-			pass
+		
+		if 'Down' in is_colliding(platforms,player1):
+			#print ('Dont go down')
+
+			player1.velocity = 1
 		else:
-			player1.go_right()
-
-	if pressed[pygame.K_LEFT]:
-		if 'Left' in is_colliding(platforms,player1) :
-			#print ('don\'t go left')
-			pass
-		else:
-			player1.go_left()
-
-	
-	if 'Down' in is_colliding(platforms,player1):
-		#print ('Dont go down')
-
-		player1.velocity = 1
-	else:
-		player1.gravity()
+			player1.gravity()
 
 
 	screen.fill((0,0,0))
@@ -107,6 +114,9 @@ while not done:
 		platform.update()
 	if player1.rect.colliderect(Lava.rect):
 		print ('You lose')
+		game_over(screen)
+		pressed = None
+		moving = False
 	Lava.update_lava()
 
 	player1.draw_player()
