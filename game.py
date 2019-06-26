@@ -135,7 +135,7 @@ while not done:
 		platform.draw()
 		platform.update()
 	if player1.rect.colliderect(Lava.rect):
-		print ('You lose')
+		#print ('You lose')
 		game_over(screen)
 		pressed = None
 		moving = False
