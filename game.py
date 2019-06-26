@@ -84,6 +84,7 @@ platforms.add(platform(RED, 200, 20 ,1300, 150,screen))
 platforms.add(platform(BLUE, 150, 20 ,1400, 50,screen))
 platforms.add(platform(BLACK, 250, 20 ,1500, 100,screen))
 platforms.add(platform(BLACK,100,100,1500,500,screen))
+platforms.add(platform(BLACK,20,1000, 1800, 0, screen))
 player1 = player(200,500,screen,platforms)
 Lava = lv(RED,500,700,-400,1,screen) 
 moving = True
