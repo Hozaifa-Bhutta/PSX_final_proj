@@ -6,18 +6,17 @@ def is_colliding(platforms, player):
 		if player.rect.colliderect(platform.rect):
 			platform_list_y = range(platform.rect.y-10,platform.rect.y+10)
 			if (player.rect.y-30) ==(platform.rect.y-platform.rect.height):
-				print ('Up')
+				#print ('Up')
 				return 'Up'
-			elif (player.rect.y +55) in platform_list_y:
-				print ('Down')
+			if (player.rect.y +55) in platform_list_y:
+				#print ('Down')
 				return 'Down'
-			elif abs((platform.rect.x)-(player.rect.x + 40)) <=5: 
-				#print ('Right')
+			if abs((platform.rect.x)-(player.rect.x + 40)) <=5: 
+				print ('in right')
 				return 'Right'
-			else:
-				print ('in left')
+			if abs((player.rect.x)-(platform.rect.x+platform.width)):
 				return 'Left'
-			print (platform.rect.x+platform.width,player.rect.x)
+	print (abs(platform.rect.x-(player.rect.x+40)))
 
 clock = pygame.time.Clock()
 
@@ -35,9 +34,8 @@ platforms = pygame.sprite.Group()
 pygame.Rect(10,10,10,10)
 platform1 = platform(BLUE, 100, 20, 450, 400, screen)
 platforms.add(platform1)
-platforms.add(platform(GREEN, 200, 20 ,550, 300,screen))
+platforms.add(platform(GREEN, 200, 200 ,800, 300,screen))
 player1 = player(100,500,screen,platforms)
-test = pygame.Rect(player1.x,player1.y,10,10)
 while not done:
 
 	previous_y = player1.rect.y
@@ -85,7 +83,6 @@ while not done:
 		platform.draw()
 		platform.update()
 	player1.draw_player()
-	pygame.draw.rect(screen, BLUE,test)
 	#player1.rect.x-=1
 
 
