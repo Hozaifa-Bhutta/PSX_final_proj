@@ -20,4 +20,4 @@ class lava(pygame.sprite.Sprite):
 	def draw_lava(self):	
 		pygame.draw.rect(self.screen,self.color,self.rect)
 	def update_lava(self):
-		self.rect.x-=1
+		pass
