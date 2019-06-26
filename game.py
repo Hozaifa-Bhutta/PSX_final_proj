@@ -9,17 +9,15 @@ def is_colliding(platforms, player):
 		i += 1
 		if player.rect.colliderect(platform.rect):
 			platform_list_y = range(platform.rect.y-10,platform.rect.y+10)
-			if i %2 == 0:
-				print (platform.rect.y-platform.rect.height,player.rect.y-30)
 			if (player.rect.y-34) ==(platform.rect.y-platform.height):
 				#print ('Up')
 				direction_vals.append('Up')
-			if (player.rect.y +55) in platform_list_y:
+			elif (player.rect.y +55) in platform_list_y:
 				#print ('Down')
 				direction_vals.append('Down')
-			if abs((platform.rect.x)-(player.rect.x + 40)) <=5: 
+			elif abs((platform.rect.x)-(player.rect.x + 40)) <=5: 
 				direction_vals.append('Right')
-			if abs((player.rect.x)-(platform.rect.x+platform.width)):
+			elif abs((player.rect.x)-(platform.rect.x+platform.width)):
 				direction_vals.append('Left')
 	return direction_vals
 
@@ -41,6 +39,23 @@ platform1 = platform(BLUE, 100, 20, 450, 400, screen)
 platforms.add(platform1)
 platforms.add(platform(BLUE,100,20,800,250,screen))
 platforms.add(platform(GREEN, 100, 20 ,800, 300,screen))
+platforms.add(platform(WHITE, 200, 20 ,60, 400,screen))
+platforms.add(platform(RED, 100, 20 ,75, 350,screen))
+platforms.add(platform(BLUE, 200, 20 ,400, 300,screen))
+platforms.add(platform(GREEN, 150, 20 ,400, 300,screen))
+platforms.add(platform(BLACK, 250, 20 ,206, 300,screen))
+
+platforms.add(platform(WHITE, 300, 20 ,400, 400,screen))
+platforms.add(platform(RED, 100, 20 ,300, 350,screen))
+platforms.add(platform(BLUE, 210, 20 ,500, 300,screen))
+platforms.add(platform(RED, 150, 20 ,550, 300,screen))
+platforms.add(platform(RED, 250, 20 ,1000, 300,screen))
+
+platforms.add(platform(WHITE, 200, 20 ,480, 200,screen))
+platforms.add(platform(RED, 100, 20 ,400, 100,screen))
+platforms.add(platform(BLUE, 200, 20 ,300, 150,screen))
+platforms.add(platform(GREEN, 150, 20 ,400, 50,screen))
+platforms.add(platform(BLACK, 250, 20 ,500, 100,screen))
 player1 = player(100,500,screen,platforms)
 Lava = lv(RED,500,700,-400,1,screen) 
 while not done:
