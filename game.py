@@ -170,7 +170,7 @@ while not done:
 	else:
 		player1.rect.x-=1
 	if 'Right' in is_colliding(platforms,player1):
-		
+		pass
 	else:
 		player1.rect.x -=1
 	
