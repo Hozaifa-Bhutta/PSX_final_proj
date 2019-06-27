@@ -126,9 +126,9 @@ platforms.add(platform(BLUE,200,20,3300,400,screen))
 platforms.add(platform(BLUE,10,10,3500,100,screen))
 platforms.add(platform(GREEN,300,20,3550,200,screen))
 platforms.add(platform(WHITE,250,20,3650,150,screen))
-platforms.add(platform(WHITE,10,150,4100,50,screen))
+platforms.add(platform(BLACK,10,240,4100,-20,screen))
 platforms.add(platform(BLUE,10,20,4000,350,screen))
-platforms.add(platform(GREEN,100,20,4500,235,screen))
+platforms.add(platform(GREEN,120,20,4460,235,screen))
 #Wrong path
 platforms.add(platform(RED,750,10,5000,500,screen))
 platforms.add(platform(RED,20,10,5900,540,screen))
@@ -140,7 +140,7 @@ platforms.add(platform(BLUE,10,10,6200,220,screen))
 platforms.add(platform(BLUE,10,10,6350,220,screen))
 platforms.add(platform(BLUE,10,10,6550,220,screen))
 platforms.add(platform(BLUE,10,10,6750,220,screen))
-platform.add(platform(BLACK,100,400,6800,350,screen))
+platforms.add(platform(BLACK,100,500,6800,350,screen))
 game_win = False
 
 castle = pygame.image.load('castle.png')
@@ -174,8 +174,7 @@ while not done:
 			if 'Right' in is_colliding(platforms,player1):
 				#print ('Don\'t go right')
 				pass
-			elif player1.rect.x >= WIDTH:
-				pass
+
 			else:
 				player1.go_right()
 
@@ -223,7 +222,8 @@ while not done:
 		player1.rect.x -=1
 	if game_win != True:
 		castle_rect.x -= 1
-	
+	if player1.rect.x >= WIDTH-20:
+				player1.rect.x = WIDTH-20
 	if player1.rect.colliderect(castle_rect):
 		Win(screen)
 		pressed = None
