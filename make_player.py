@@ -24,7 +24,7 @@ class player(pygame.sprite.Sprite):
 	def gravity(self):
 		if self.rect.y < 500:
 			self.rect.y += self.velocity
-			self.velocity += 0.05
+			self.velocity += 0.07
 		else:
 			self.velocity = 1
 
