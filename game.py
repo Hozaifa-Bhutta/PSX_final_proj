@@ -22,11 +22,19 @@ def is_colliding(platforms, player):
 	return direction_vals
 def game_over(screen):
 	font = pygame.font.Font(None, 36)
-	text = font.render("Game Over", True, WHITE)
+	text = font.render("Game Over", True, RED)
 	text_rect = text.get_rect()
 	text_x = screen.get_width() / 2 - text_rect.width / 2
 	text_y = screen.get_height() / 2 - text_rect.height / 2
 	screen.blit(text, [text_x, text_y])
+def Win(screen):
+	font = pygame.font.Font(None, 36)
+	text = font.render("You Win", True,GREEN)
+	text_rect = text.get_rect()
+	text_x = screen.get_width() / 2 - text_rect.width / 2
+	text_y = screen.get_height() / 2 - text_rect.height / 2
+	screen.blit(text, [text_x, text_y])
+
 clock = pygame.time.Clock()
 
 pygame.init()
@@ -109,16 +117,19 @@ platforms.add(platform(WHITE,40,1300,6000,200,screen))
 platforms.add(platform(RED,750,10,5000,100,screen))
 platforms.add(platform(BLUE,10,10,6050,220,screen))
 platforms.add(platform(BLUE,10,10,6200,220,screen))
-platforms.add(platform(BLUE,10,10,6250,220,screen))
 platforms.add(platform(BLUE,10,10,6350,220,screen))
-platforms.add(platform(BLUE,10,10,6450,220,screen))
+platforms.add(platform(BLUE,10,10,6550,220,screen))
+platforms.add(platform(BLUE,10,10,6750,220,screen))
+platform.add(platform(WHITE,100,400,6800,350,screen))
 
 
-
-
+castle = pygame.image.load('castle.png')
+castle_rect = castle.get_rect()
 player1 = player(200,500,screen,platforms)
 Lava = lv(RED,500,700,-400,1,screen) 
 moving = True
+castle_rect.x += 7000
+castle_rect.y+=400
 while not done:
 
 	previous_y = player1.rect.y
@@ -172,9 +183,13 @@ while not done:
 		pressed = None
 		moving = False
 	Lava.update_lava()
-
+	#pygame.draw.rect(screen,GREEN,castle_rect)
+	
+	#castle_rect.y = 300
+	screen.blit(castle, castle_rect)
 	player1.draw_player()
 	Lava.draw_lava()
+
 	if 'Left' in is_colliding(platforms,player1):
 		#print ('don\'t go left')
 		pass
@@ -184,8 +199,12 @@ while not done:
 		pass
 	else:
 		player1.rect.x -=1
+	castle_rect.x -= 1
 	
-
+	if player1.rect.colliderect(castle_rect):
+		Win(screen)
+		pressed = None
+		moving = False
 
 	pygame.display.flip()
 	clock.tick(60)
