@@ -90,7 +90,7 @@ platforms.add(platform(BLUE,50,20,2000,450,screen))
 platforms.add(platform(GREEN,20,100,2100,550,screen))
 platforms.add(platform(RED,100,20,2050,50,screen))
 platforms.add(platform(WHITE,20,98,1900,200,screen))
-platforms.add(platform(BLACK,10,50,2100,10,screen))
+platforms.add(platform(BLACK,50,10,2100,10,screen))
 platforms.add(platform(BLACK,10,1000,2000,-900,screen))
 
 platforms.add(platform(WHITE,200,1100,3500,300,screen))
