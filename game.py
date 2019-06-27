@@ -85,6 +85,26 @@ platforms.add(platform(BLUE, 150, 20 ,1400, 50,screen))
 platforms.add(platform(BLACK, 250, 20 ,1500, 100,screen))
 platforms.add(platform(BLACK,100,100,1500,500,screen))
 platforms.add(platform(BLACK,20,1000, 1800, 0, screen))
+
+
+
+
+platforms.add(platform(WHITE,200,1100,3500,300,screen))
+platforms.add(platform(BLUE,200,20,3300,400,screen))
+platforms.add(platform(BLUE,10,10,3500,100,screen))
+platforms.add(platform(GREEN,300,20,3550,200,screen))
+platforms.add(platform(WHITE,300,20,3650,150,screen))
+platforms.add(platform(BLUE,10,20,4000,350,screen))
+platforms.add(platform(GREEN,100,20,4500,235,screen))
+#Wrong path
+platforms.add(platform(RED,750,10,5000,500,screen))
+platforms.add(platform(RED,20,10,5900,540,screen))
+platforms.add(platform(WHITE,40,1100,6000,550,screen))
+#wrong path
+platforms.add(platform(RED,750,10,5000,100,screen))
+
+
+
 player1 = player(200,500,screen,platforms)
 Lava = lv(RED,500,700,-400,1,screen) 
 moving = True
@@ -150,7 +170,7 @@ while not done:
 	else:
 		player1.rect.x-=1
 	if 'Right' in is_colliding(platforms,player1):
-		pass
+		
 	else:
 		player1.rect.x -=1
 	
