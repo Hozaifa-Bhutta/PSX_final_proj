@@ -110,8 +110,8 @@ platforms.add(platform(RED,750,10,5000,100,screen))
 platforms.add(platform(BLUE,10,10,6050,220,screen))
 platforms.add(platform(BLUE,10,10,6200,220,screen))
 platforms.add(platform(BLUE,10,10,6250,220,screen))
-platforms.add(platform(BLUE,10,10,63500,220,screen))
-platforms.add(platform(BLUE,10,10,64500,220,screen))
+platforms.add(platform(BLUE,10,10,6350,220,screen))
+platforms.add(platform(BLUE,10,10,6450,220,screen))
 
 
 
