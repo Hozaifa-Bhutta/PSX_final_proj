@@ -154,6 +154,8 @@ while not done:
 			if 'Right' in is_colliding(platforms,player1):
 				#print ('Don\'t go right')
 				pass
+			elif player1.rect.x >= WIDTH:
+				pass
 			else:
 				player1.go_right()
 
@@ -199,7 +201,8 @@ while not done:
 		pass
 	elif game_win != True:
 		player1.rect.x -=1
-	castle_rect.x -= 1
+	if game_win != True:
+		castle_rect.x -= 1
 	
 	if player1.rect.colliderect(castle_rect):
 		Win(screen)
