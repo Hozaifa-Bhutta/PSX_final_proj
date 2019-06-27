@@ -121,7 +121,7 @@ platforms.add(platform(BLUE,10,10,6350,220,screen))
 platforms.add(platform(BLUE,10,10,6550,220,screen))
 platforms.add(platform(BLUE,10,10,6750,220,screen))
 platform.add(platform(WHITE,100,400,6800,350,screen))
-
+game_win = False
 
 castle = pygame.image.load('castle.png')
 castle_rect = castle.get_rect()
@@ -193,18 +193,18 @@ while not done:
 	if 'Left' in is_colliding(platforms,player1):
 		#print ('don\'t go left')
 		pass
-	else:
+	elif game_win != True:
 		player1.rect.x-=1
 	if 'Right' in is_colliding(platforms,player1):
 		pass
-	else:
+	elif game_win != True:
 		player1.rect.x -=1
 	castle_rect.x -= 1
 	
 	if player1.rect.colliderect(castle_rect):
 		Win(screen)
 		pressed = None
-		moving = False
-
+		moving = False 
+		game_win = True
 	pygame.display.flip()
 	clock.tick(60)
