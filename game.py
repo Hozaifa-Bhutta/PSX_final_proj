@@ -93,15 +93,22 @@ platforms.add(platform(WHITE,200,1100,3500,300,screen))
 platforms.add(platform(BLUE,200,20,3300,400,screen))
 platforms.add(platform(BLUE,10,10,3500,100,screen))
 platforms.add(platform(GREEN,300,20,3550,200,screen))
-platforms.add(platform(WHITE,300,20,3650,150,screen))
+platforms.add(platform(WHITE,250,20,3650,150,screen))
+platforms.add(platform(WHITE,10,150,4100,50,screen))
 platforms.add(platform(BLUE,10,20,4000,350,screen))
 platforms.add(platform(GREEN,100,20,4500,235,screen))
 #Wrong path
 platforms.add(platform(RED,750,10,5000,500,screen))
 platforms.add(platform(RED,20,10,5900,540,screen))
-platforms.add(platform(WHITE,40,1100,6000,550,screen))
-#wrong path
+platforms.add(platform(WHITE,40,1300,6000,200,screen))
+#Right path
 platforms.add(platform(RED,750,10,5000,100,screen))
+platforms.add(platform(BLUE,10,10,6050,220,screen))
+platforms.add(platform(BLUE,10,10,6200,220,screen))
+platforms.add(platform(BLUE,10,10,6250,220,screen))
+platforms.add(platform(BLUE,10,10,63500,220,screen))
+platforms.add(platform(BLUE,10,10,64500,220,screen))
+
 
 
 
