@@ -150,84 +150,105 @@ Lava = lv(RED,500,700,-400,1,screen)
 moving = True
 castle_rect.x += 7000
 castle_rect.y+=400
+button = pygame.Rect(WIDTH/2, HEIGHT/2, 100, 50)
+start = False
 while not done:
 
-	previous_y = player1.rect.y
-	for event in pygame.event.get():
-		if event.type == pygame.QUIT:
-			done = True
+	if start:
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				done = True
 
-	if moving == True:
-		pressed = pygame.key.get_pressed()
-		if pressed[pygame.K_UP]:
-			for i in range(0,5):
-				if 'Up' in is_colliding(platforms,player1):
-					#print ('Don\'t go up')
+		if moving == True:
+			pressed = pygame.key.get_pressed()
+			if pressed[pygame.K_UP]:
+				for i in range(0,5):
+					if 'Up' in is_colliding(platforms,player1):
+						#print ('Don\'t go up')
+						pass
+					else:
+						player1.jump()
+
+						
+
+				player1.jumping == False
+			if pressed[pygame.K_RIGHT]:
+				if 'Right' in is_colliding(platforms,player1):
+					#print ('Don\'t go right')
+					pass
+
+				else:
+					player1.go_right()
+
+			if pressed[pygame.K_LEFT]:
+				if 'Left' in is_colliding(platforms,player1) :
+					#print ('don\'t go left')
 					pass
 				else:
-					player1.jump()
+					player1.go_left()
 
-					
+			
+			if 'Down' in is_colliding(platforms,player1):
+				#print ('Dont go down')
 
-			player1.jumping == False
-		if pressed[pygame.K_RIGHT]:
-			if 'Right' in is_colliding(platforms,player1):
-				#print ('Don\'t go right')
-				pass
-
+				player1.velocity = 1
 			else:
-				player1.go_right()
+				player1.gravity()
 
-		if pressed[pygame.K_LEFT]:
-			if 'Left' in is_colliding(platforms,player1) :
-				#print ('don\'t go left')
-				pass
-			else:
-				player1.go_left()
 
+		screen.fill((0,0,0))
+		for platform in platforms:
+			platform.draw()
+			platform.update()
+		if player1.rect.colliderect(Lava.rect):
+			#print ('You lose')
+			game_over(screen)
+			pressed = None
+			moving = False
+		Lava.update_lava()
+		#pygame.draw.rect(screen,GREEN,castle_rect)
 		
-		if 'Down' in is_colliding(platforms,player1):
-			#print ('Dont go down')
+		#castle_rect.y = 300
+		screen.blit(castle, castle_rect)
+		player1.draw_player()
+		Lava.draw_lava()
+		
 
-			player1.velocity = 1
-		else:
-			player1.gravity()
+		if 'Left' in is_colliding(platforms,player1):
+			#print ('don\'t go left')
+			pass
+		elif game_win != True:
+			player1.rect.x-=1
+		if 'Right' in is_colliding(platforms,player1):
+			pass
+		elif game_win != True:
+			player1.rect.x -=1
+		if game_win != True:
+			castle_rect.x -= 1
+		if player1.rect.x >= WIDTH-20:
+					player1.rect.x = WIDTH-20
+		if player1.rect.colliderect(castle_rect):
+			Win(screen)
+			pressed = None
+			moving = False 
+			game_win = True
+	else:
+		mouse_rect = pygame.Rect(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1],10,10)
+		screen.fill((0,0,0))
+		pygame.draw.rect(screen,BLACK,button)
+		font = pygame.font.Font(None, 36)
+		text = font.render("Start", True, WHITE)
+		text_rect = text.get_rect()
+		text_x =  button.x + 25
+		text_y = button.y + 25
+		screen.blit(text, [text_x, text_y])
 
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				done = True
+			if event.type == pygame.MOUSEBUTTONDOWN:
+				if mouse_rect.colliderect(button):
+					start = True
 
-	screen.fill((0,0,0))
-	for platform in platforms:
-		platform.draw()
-		platform.update()
-	if player1.rect.colliderect(Lava.rect):
-		#print ('You lose')
-		game_over(screen)
-		pressed = None
-		moving = False
-	Lava.update_lava()
-	#pygame.draw.rect(screen,GREEN,castle_rect)
-	
-	#castle_rect.y = 300
-	screen.blit(castle, castle_rect)
-	player1.draw_player()
-	Lava.draw_lava()
-
-	if 'Left' in is_colliding(platforms,player1):
-		#print ('don\'t go left')
-		pass
-	elif game_win != True:
-		player1.rect.x-=1
-	if 'Right' in is_colliding(platforms,player1):
-		pass
-	elif game_win != True:
-		player1.rect.x -=1
-	if game_win != True:
-		castle_rect.x -= 1
-	if player1.rect.x >= WIDTH-20:
-				player1.rect.x = WIDTH-20
-	if player1.rect.colliderect(castle_rect):
-		Win(screen)
-		pressed = None
-		moving = False 
-		game_win = True
 	pygame.display.flip()
 	clock.tick(60)
